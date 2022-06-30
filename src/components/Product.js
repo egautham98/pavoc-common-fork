@@ -20,7 +20,7 @@ const Product = () => {
   const Left = {
     inlineSize: "clamp(300px,657px,657px)",
     flexDirection: "column",
-    marginRight:"5vw",
+    marginRight:"12vw",
   };
   const Right = {};
 
