@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { createContext } from "react";
+import Product from "./components/Product";
+
+const theme = {
+  primaryColor: "#1ABC9C",
+  primaryVariant1:"#EBFFFB",
+  secondaryColor: "#F39C12",
+
+};
+export const UserContextTheme = createContext(theme);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserContextTheme.Provider value={theme}>
+      <div style={Container}>
+        <Product></Product>
+      </div>
+    </UserContextTheme.Provider>
   );
 }
 
 export default App;
+
+const Container = {
+  maxWidth: "1920px",
+  margin: " 0px auto",
+};
