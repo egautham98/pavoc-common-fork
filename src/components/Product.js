@@ -1,26 +1,27 @@
 import React, { useContext } from "react";
-import { UserContextTheme } from "../App.js";
+// import { UserContextTheme } from "../App.js";
 import JobsBanner from "..//img/JobsBanner.png"
+import { flexCenter } from "../App";
 
-const Product = () => {
-  const theme = useContext(UserContextTheme);
+
+const Product = ({direction,theme,switchTheme}) => {
+
+
+  // const theme = useContext(UserContextTheme);
 
  //css start
-  const flexCenter = {
-    display:"flex",
-    justifyContent:"center"
-  }
+
 
   const Container = {
-    backgroundColor: theme.primaryVariant1,
+    backgroundColor: switchTheme? "white": theme.primaryVariant1,
     paddingBlock:"1.5rem",
-    paddingInline:"min(10vh,10rem,10vw)"
+    paddingInline:"min(10vh,10rem,10vw)",
   };
 
   const Left = {
     inlineSize: "clamp(300px,657px,657px)",
     flexDirection: "column",
-    marginRight:"12vw",
+    // marginRight:"12vw",
   };
   const Right = {};
 
@@ -32,6 +33,15 @@ const Product = () => {
   const Para = {
     fontSize:"clamp(16px, 2vw, 1.25rem)",
   }
+
+  //reverseCondition-Css
+  if(direction === "reverse"){
+    Container["flexDirection"] = "row-reverse";
+    Right["marginRight"] = "12vw";
+  }
+  else{ Container["flexDirection"] = "row";
+  Left["marginRight"] = "12vw";}
+
 // css end
   return (
     <section style={{...Container,...flexCenter}}>
@@ -45,7 +55,7 @@ const Product = () => {
           fringilla ullamcorper. Sed id consequat urna.
         </p>
       </div>
-      <div style={flexCenter}>
+      <div style={{...Right,...flexCenter}}>
         <img src={JobsBanner} style={{maxWidth:"100%",objectFit:"scale-down"}}></img>
       </div>
     </section>
